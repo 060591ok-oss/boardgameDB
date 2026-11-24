@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Настільна гра «База даних»</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="top">
+  <div class="tl">🗄️<span>🔑</span></div>
+  <div class="tt"><small>Настільна навчальна гра</small><h1>БАЗА ДАНИХ</h1></div>
+  <div class="tb">💻 Інформатика<br>9–11 класи</div>
+</header>
+
+<main id="setup">
+  <section class="panel setupcard">
+    <h2>Налаштування гри</h2>
+    <label class="row">Кількість гравців або команд
+      <select id="count"><option>1</option><option>2</option><option>3</option><option selected>4</option><option>5</option><option>6</option></select>
+    </label>
+    <div id="names"></div>
+    <label class="row">Клас або урок (для сертифіката)
+      <input id="cls" maxlength="30" placeholder="наприклад, 10-А">
+    </label>
+    <button id="start" class="main big">Почати гру</button>
+    <p class="note">Кидайте кубик, відповідайте на запитання за кольором клітинки й першими дійдіть до фінішу.</p>
+  </section>
+</main>
+
+<main id="game" hidden>
+  <aside class="panel side">
+    <h3>Гравці</h3>
+    <ul id="plist"></ul>
+    <h3>Кубик</h3>
+    <div id="dice" aria-live="polite"></div>
+    <button id="roll" class="main"></button>
+    <button id="endbtn" class="ghost">Завершити гру</button>
+  </aside>
+
+  <section class="boardwrap panel">
+    <div id="board"></div>
+    <div class="legend"><b>Рівні складності:</b>
+      <span><i class="lg l1"></i>І рівень: базові поняття</span>
+      <span><i class="lg l2"></i>ІІ рівень: практичні завдання</span>
+      <span><i class="lg l3"></i>ІІІ рівень: розширені задачі</span>
+    </div>
+  </section>
+
+  <aside class="panel side">
+    <h3>Правила гри</h3>
+    <ol class="rules">
+      <li>Гравці по черзі кидають кубик і рухають фішку.</li>
+      <li>Колір клітинки визначає рівень картки із завданням.</li>
+      <li>Правильна відповідь дає 1, 2 або 3 DataCoin за рівень.</li>
+      <li>Неправильна відповідь або вихід часу: назад на 2 клітинки.</li>
+      <li>Підказка коштує 1 DataCoin: вона прибирає дві хибні відповіді.</li>
+      <li>На фініші чекає фінальне завдання. Хто виконає його першим, переміг.</li>
+    </ol>
+    <h3>Журнал</h3>
+    <ul id="log"></ul>
+  </aside>
+</main>
+
+<main id="result" hidden>
+  <section class="panel noprint" id="rank"></section>
+  <div class="actions noprint">
+    <button class="main" onclick="window.print()">🖨️ Друкувати сертифікати</button>
+    <button class="ghost" onclick="location.reload()">Нова гра</button>
+  </div>
+  <section id="certs"></section>
+</main>
+
+<div id="modal" hidden></div>
+<script src="js/questions.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>
